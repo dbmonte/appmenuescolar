@@ -5,20 +5,20 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require('./assets/inicio.png')}
+        source={require('./assets/menu.png')}
         style={styles.background}
       >
-        <TouchableOpacity style={styles.submit} onPress={handleButtonPress}>
-          
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.submit1} onPress={handleButtonPress}></TouchableOpacity>
+        <TouchableOpacity style={styles.submit2} onPress={handleButtonPress}><Text style={styles.buttonText}></Text></TouchableOpacity>
+        <TouchableOpacity style={styles.submit3} onPress={handleButtonPress}></TouchableOpacity>
+        <TouchableOpacity style={styles.submit4} onPress={handleButtonPress}></TouchableOpacity>
       </ImageBackground>
     </SafeAreaView>
   );
 }
 
 const handleButtonPress = () => {
-  // Coloque aqui a ação a ser executada quando o botão for pressionado
-  alert('Iniciando');
+  alert('Abrindo cardapio');
 };
 
 const styles = StyleSheet.create({
@@ -31,16 +31,46 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  submit: {
+  submit1: {
     position: 'absolute',
-    bottom: 115, // Posição vertical do botão
+    top: 465,
+    bottom: 15, // Posição vertical do botão
     left: 100, // Posição horizontal do botão
     backgroundColor: 'rgba(0, 0, 0, 0)', // Cor de fundo do botão com transparência
     padding: 45,
     margin:1,
     borderRadius: 20,
-    width: 140,
-    height: 10,
+    width: 170,
+    height: 50,
+  },
+  submit2: {
+    position: 'absolute',
+    top:240, 
+    bottom: 14, // Posição vertical do botão
+    left: 100, // Posição horizontal do botão
+    backgroundColor: 'rgba(0, 0, 0, 0)', // Cor de fundo do botão com transparência
+    padding: 5,
+    margin:1,
+    borderRadius: 20,
+    width: 170,
+    height: 70,
+  },
+  submit3: {
+    position: 'absolute',
+    top:320, 
+    bottom: 30, // Posição vertical do botão
+    right: 100,
+    left: 100, // Posição horizontal do botão
+    backgroundColor: 'rgba(0, 0, 0, 0)', // Cor de fundo do botão com transparência
+    padding: 5,
+    margin:1,
+    borderRadius: 20,
+    width: 170,
+    height: 70,
+  },
+  buttonText: {
+    color: 'white', // Cor do texto do botão
+    fontSize: 16,
+    justifyContent: 15,
   },
 });
-
