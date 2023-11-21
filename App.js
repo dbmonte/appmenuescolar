@@ -1,46 +1,117 @@
-import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  ImageBackground,
+  SafeAreaView,
+  Text,
+  View,
+  Image,
+  Button,
+} from "react-native";
 
-export default function App() {
+const App = () => {
+  const [data, setData] = useState({
+    date: "2023-07-20",
+    meals: [
+      {
+        name: "Café da manhã",
+        image: require("/cafedamanha.png"),
+      },
+      {
+        name: "Almoço",
+        image: require("/almoco.png"),
+      },
+      {
+        name: "Lanche da tarde",
+        image: require("/lanche.png"),
+      },
+      {
+        name: "Jantar",
+        image: require("/janta.png"),
+      },
+    ],
+  });
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container1}>
+      <Text style={styles.title}>Cardápio do dia</Text>
+      <Text style={styles.date}>{data.date}</Text>
+      <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require('./assets/inicio.png')}
+        source={require('/background-app.png')}
         style={styles.background}
       >
-        <TouchableOpacity style={styles.submit} onPress={handleButtonPress}>
-          
-        </TouchableOpacity>
+      <View style={styles.meals}>
+        {data.meals.map((meal, index) => (
+          <View key={index} style={styles.meal}>
+            <Image style={styles.mealImage} source={meal.image} />
+            <Button
+              title={meal.name}
+              style={styles.button}
+              onPress={() => {
+                // TODO: Executar ação ao clicar no botão da refeição
+              }}
+            />
+          </View>
+        ))}
+      </View>
+      
       </ImageBackground>
     </SafeAreaView>
-  );
-}
 
-const handleButtonPress = () => {
-  // Coloque aqui a ação a ser executada quando o botão for pressionado
-  alert('Iniciando');
+      
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#ffffff",
   },
   background: {
-    width: '100%',
-    height: '100%',
+    width:'100%',
+    height:'100%',
   },
-  submit: {
-    position: 'absolute',
-    bottom: 115, // Posição vertical do botão
-    left: 100, // Posição horizontal do botão
-    backgroundColor: 'rgba(0, 0, 0, 0)', // Cor de fundo do botão com transparência
-    padding: 45,
-    margin:1,
+  container1:{
+    alignContent:"center",
+    width:'100%',
+    height:'100%',
+
+  },
+  title: {
+    fontSize: 24,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontFamily: "MuseoModerno",
+  },
+  date: {
+    fontSize: 18,
+    textAlign: "center",
+    fontFamily: "Montserrat",
+  },
+  meals: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  meal: {
+    borderRadius:'10%',
+    width: "50%",
+  },
+  mealImage: {
+    width: 125,
+    height: 125,
     borderRadius: 20,
-    width: 140,
-    height: 10,
+  },
+  button: {
+    backgroundColor: "#0A2C5A",
+    color: "#F0F1EB",
+    width: 127,
+    height: 62,
+    borderRadius: 50,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });
 
+export default App;
